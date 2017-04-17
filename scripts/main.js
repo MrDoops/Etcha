@@ -1,4 +1,6 @@
 isDefColour = true;
+var lastGridNo;
+var drawColour = '#E040FB'; // default colour
 
 $(document).ready(function() 
 {
@@ -22,6 +24,7 @@ function toggleHighlight(obj)
 
 function drawGrid(gridNo)
 {
+	lastGridNo = gridNo;
 
 	var i;
 	var num = gridNo * gridNo;
@@ -61,10 +64,18 @@ function resetDisplay()
 	drawGrid(granularity);
 }
 
+function clearGrid()
+{
+	//$('.container').empty();
+	//drawGrid(lastGridNo);
+	$('.unit').css('background', '#FFFFFF');
+	draw();
+}
+
 function randomColour()
 { 
   	isDefColour = false;
-  	var colour = '#'+Math.floor(Math.random()*16777215).toString(16);
+  	drawColour = '#'+Math.floor(Math.random()*16777215).toString(16);
 
  	$(".unit").hover(function()
  	{ 
@@ -75,10 +86,11 @@ function randomColour()
 function setBlack() 
 { 
   	isDefColour = false;
+  	drawColour = '#212121'
 
  	$(".unit").hover(function()
  	{ 
- 		$(this).css("background", '#212121'); 
+ 		$(this).css("background", drawColour); 
  	});
 } 
 
@@ -87,7 +99,7 @@ function draw()
 	isDefColour = true;
 	$('.unit').hover(function()
 	{
-		$(this).css('background', '#E040FB');
+		$(this).css('background', drawColour);
 		//console.log('drawing...');
 	});
 }
