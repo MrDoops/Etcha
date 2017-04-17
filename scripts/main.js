@@ -66,9 +66,9 @@ function resetDisplay()
 
 function clearGrid()
 {
-	//$('.container').empty();
-	//drawGrid(lastGridNo);
-	$('.unit').css('background', '#FFFFFF');
+	//$('.container').empty(); // this way works, but it's not efficient
+	//drawGrid(lastGridNo); 
+	$('.unit').css('background', '#FFFFFF'); // Better solution
 	draw();
 }
 
